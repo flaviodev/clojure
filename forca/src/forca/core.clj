@@ -1,6 +1,8 @@
-(ns forca.core(:gen-class))
+(ns forca.core
+  (:gen-class))
 
 (def total-de-vidas 6)
+(def palavra-secreta "MELANCIA")
 
 (defn perdeu [] (print "você perdeu "))
 
@@ -9,11 +11,6 @@
 (defn le-letra! [] (read-line))
 
 (defn acertou? [chute palavra] (.contains palavra chute))
-
-(defn avalia-chute [chute vidas palavra acertos]
-  (if(acertou? chute palavra)
-    (jogo vidas palavra (conj acertos chute))
-    (jogo (dec vidas) palavra acertos)))
 
 (defn letras-faltantes [palavra acertos]
   (remove (fn [letra](contains? acertos (str letra))) palavra))
@@ -44,10 +41,10 @@
               (println "Erro a letra! Perdeu vida! ")
               (recur (dec vidas) palavra acertos))))))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+(defn comeca-o-jogo [] (jogo total-de-vidas palavra-secreta #{}))
+
+(defn -main [& args]
+  (comeca-o-jogo))
 
 ;;reload  
 (defn r [] (require '[forca.core :as forca] :reload))
@@ -71,7 +68,7 @@
   (def carros [10,20,30])
   (->> carros 
     (map (fn[x](* x 2)))
-    (map (fn[x](* x 3)))
+    (map (fn[x](* x 2)))
     (reduce (fn[acc x](+ acc x)))
   )
 )
