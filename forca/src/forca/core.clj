@@ -67,6 +67,15 @@
         (if (> contador n) soma
         (recur (inc contador) (+ soma contador)))))
 
+(defn lista-senquencia[]
+  (def carros [10,20,30])
+  (->> carros 
+    (map (fn[x](* x 2)))
+    (map (fn[x](* x 3)))
+    (reduce (fn[acc x](+ acc x)))
+  )
+)
+
 ;; (dec numero) numero--
 ;; (inc numero) numero++
 ;; (conj numeros 1) add item to collection
