@@ -1,6 +1,6 @@
 #!/bin/bash
 
-caminho=`pwd`
+app_path=`pwd`
 
 docker rm flaviodev-clojure -f
-docker run -it --name flaviodev-clojure -v $caminho/forca:/usr/src/app/forca:rw flaviodev-clojure bash
+docker run -it --name flaviodev-clojure -v $app_path/hangmangame:/usr/src/app:rw flaviodev-clojure bash

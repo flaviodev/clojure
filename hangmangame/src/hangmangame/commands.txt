@@ -1,0 +1,1 @@
+(require '[hangmangame.core :as hangmangame] :reload)
